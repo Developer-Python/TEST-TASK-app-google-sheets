@@ -6,3 +6,4 @@
 3) google-auth-httplib2 
 4) httplib2 
 5) oauth2client
+6) psycopg2
