@@ -7,4 +7,8 @@
 4) httplib2 
 5) oauth2client
 6) psycopg2
-7) pgadmin4
+7) mod_wsgi
+8) forex-python
+
+1) https://www.enterprisedb.com/postgresql-tutorial-resources-training?uuid=db55e32d-e9f0-4d7c-9aef-b17d01210704&campaignId=7012J000001NhszQAC
+2) потребуется установить PostgreSql
