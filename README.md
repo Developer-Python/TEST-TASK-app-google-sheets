@@ -7,3 +7,4 @@
 4) httplib2 
 5) oauth2client
 6) psycopg2
+7) pgadmin4
