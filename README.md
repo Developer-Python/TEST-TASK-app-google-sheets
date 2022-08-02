@@ -6,7 +6,7 @@
 
 ### 1) Настройка пакетов | Python == 3.8.0
 
-1) pip3 install django3.0
+1) pip3 install django
 2) pip3 install django-grappelli
 3) pip3 install jsonfield
 4) pip3 install requests
