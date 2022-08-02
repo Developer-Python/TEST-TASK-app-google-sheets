@@ -27,7 +27,7 @@
 - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 - Заходим в директорию с установленной - `PostgreSql` у меня это `C:\Program Files\PostgreSQL` 
 - Открываем `cmd` или `ConEmu` и в консоли переходим в `C:\Program Files\PostgreSQL\14\bin` и прописываем следующее:
-1) `psql.exe -U postgres` или `psql.exe` | Вам надо войти в аккаунт, чтобы получить доступ!
+1) `psql.exe -U postgres` или `psql.exe` | У вас запросит пароль, ввидите который создавали при установке `PostgreSql`
 2) Терминал изменится на `postgres=#` далее:
 3) `CREATE DATABASE sheets;`
 4) `CREATE USER admin WITH ENCRYPTED PASSWORD 'admin'; `
