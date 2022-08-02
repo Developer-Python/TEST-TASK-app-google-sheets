@@ -28,10 +28,10 @@
 - Заходим в директорию с установленной - `PostgreSql` у меня это `C:\Program Files\PostgreSQL` 
 - Открываем `cmd` или `ConEmu` и в консоли переходим в `C:\Program Files\PostgreSQL\14\bin` и прописываем следующее:
 1) `psql.exe -U postgres` или `psql.exe` | Вам надо войти в аккаунт, чтобы получить доступ!
-1.1) Терминал изменится на `postgres=#` далее:
-2) `CREATE DATABASE sheets;`
-3) `CREATE USER admin WITH ENCRYPTED PASSWORD 'admin'; `
-4) `ALTER ROLE admin SET client_encoding TO 'utf8';`
-5) `ALTER ROLE admin SET default_transaction_isolation TO 'read committed';`
-6) `ALTER ROLE admin SET timezone TO 'UTC';`
-7) `GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;`
+2) Терминал изменится на `postgres=#` далее:
+3) `CREATE DATABASE sheets;`
+4) `CREATE USER admin WITH ENCRYPTED PASSWORD 'admin'; `
+5) `ALTER ROLE admin SET client_encoding TO 'utf8';`
+6) `ALTER ROLE admin SET default_transaction_isolation TO 'read committed';`
+7) `ALTER ROLE admin SET timezone TO 'UTC';`
+8) `GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;`
