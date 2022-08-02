@@ -26,7 +26,7 @@
 - Потребуется установить - `PostgreSql` 
 - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 - Заходим в директорию с установленной - `PostgreSql` у меня это `C:\Program Files\PostgreSQL` 
-- Открываем `cmd` или `ConEmu` и в консоли переходим в `C:\Program Files\PostgreSQL\14\bin` и прописываем следующее:
+- Открываем `cmd` или `ConEmu` и в самой консоли переходим в `C:\Program Files\PostgreSQL\14\bin` и прописываем следующее:
 1) `psql.exe -U postgres` или `psql.exe` | У вас запросит пароль, ввидите который создавали при установке `PostgreSql`
 2) Терминал изменится на `postgres=#` далее:
 3) `CREATE DATABASE sheets;`
@@ -35,3 +35,5 @@
 6) `ALTER ROLE admin SET default_transaction_isolation TO 'read committed';`
 7) `ALTER ROLE admin SET timezone TO 'UTC';`
 8) `GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;`
+
+----------------------------------------------
