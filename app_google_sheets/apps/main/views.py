@@ -74,7 +74,7 @@ def create_table(i, values, usd):
     '''     Функция: Создание таблицы      '''
     '''===================================='''
 
-	# Создаём объекты
+    # Создаём объекты
     table = Table.objects.create(
 		table_id = values.get('values')[0][i],
 		order_id = values.get('values')[1][i],
@@ -83,7 +83,7 @@ def create_table(i, values, usd):
 		date = values.get('values')[3][i],
 	)
 
-	# Сохраняем в БД
+    # Сохраняем в БД
     table.save()
 
 
@@ -94,26 +94,26 @@ def course_usd():
     '''     Функция: Текущий курс доллара     '''
     '''======================================='''
 
-	# В зависимости от курса доллара меняется и класс
+    # В зависимости от курса доллара меняется и класс
     course_usd_up_down = (
 	'value td-w-4 _bold _end mono-num _with-icon _up _red',
 	'value td-w-4 _bold _end mono-num _with-icon _down _green',
 	)
 
-	# Делаем запрос на сайт - "https://cbr.ru/key-indicators/"
+    # Делаем запрос на сайт - "https://cbr.ru/key-indicators/"
     resp = requests.get("https://cbr.ru/key-indicators/")
 
-	# Парсим весь документ через парсер - 'lxml'
+    # Парсим весь документ через парсер - 'lxml'
     soup = BeautifulSoup(resp.text, 'lxml')
 
-	# Находим тег - "td" с классом - "value td-w-4...". В нём лежит значение текущего доллара
+    # Находим тег - "td" с классом - "value td-w-4...". В нём лежит значение текущего доллара
     for i in course_usd_up_down:
 
-		# Проверяем какой из классов вернёт True
+        # Проверяем какой из классов вернёт True
         if bool(soup.find("td", attrs={ "class" : f"{i}"})) == True:
             usd = str(soup.find("td", attrs={ "class" : f"{i}"}))
 
-	# Возвращаем обработанную строку от всякого мусора с текущим долларам
+    # Возвращаем обработанную строку от всякого мусора с текущим долларам
     return float( usd[usd.find('>')+1:usd.rfind('<')].replace(',','.') )
 
 
@@ -124,14 +124,14 @@ def read_document(range):
     '''     Функция: Чтения документа     '''
     '''==================================='''
 
-	# Запроса на чтение документа из GOOGLE SHEETS
+    # Запроса на чтение документа из GOOGLE SHEETS
     values = service.spreadsheets().values().get(
 	    spreadsheetId=spreadsheet_id,
 	    range=f'A1:E{range}',
 	    majorDimension='COLUMNS',
 	).execute()
 
-	# Возвращаем словарь со встроеными массивами данных
+    # Возвращаем словарь со встроеными массивами данных
     return values
 
 
@@ -146,20 +146,20 @@ def update(request):
     '''     Функция: Обновление данных     '''
     '''===================================='''
 
-	# Чтение документа(до [N] строк)
+    # Чтение документа(до [N] строк)
     values = read_document(100)
 
-	# Текущий курс доллара
+    # Текущий курс доллара
     usd = course_usd()
 
-	# Удаляем все таблицы из БД
+    # Удаляем все таблицы из БД
     Table.objects.all().delete()
 
-	# Узнаём кол-во строк в документе и создаём диапозон(от, до)
+    # Узнаём кол-во строк в документе и создаём диапозон(от, до)
     for i in range(1, len(values.get('values')[0])):
        create_table(i, values, usd)
 
-	# Обновление страницы на главную после сохранения, чтобы сразу видеть результат
+    # Обновление страницы на главную после сохранения, чтобы сразу видеть результат
     return HttpResponseRedirect('/')
 
 
@@ -175,30 +175,30 @@ class TableView(View):
         # Точка отсчёта выполнения программы. | P.s (Я добавил по желанию, чтобы при оптимизаций видеть результат)
         start_time = time.time()
 
-		# Чтение документа(до [N] строк)
+	# Чтение документа(до [N] строк)
         values = read_document(100)
 
-		# Текущий курс доллара
+	# Текущий курс доллара
         usd = course_usd()
 
-		# Узнаём кол-во строк в документе и создаём диапозон(от, до)
+	# Узнаём кол-во строк в документе и создаём диапозон(от, до)
         for i in range(1, len(values.get('values')[0])):
 
-			# Один раз создаёт строки, а последущие разы тока проверяет недостоющие
+	    # Один раз создаёт строки, а последущие разы тока проверяет недостоющие
             try:
-				# Проверяем есть строка или нету
+		# Проверяем есть строка или нету
                 tables = Table.objects.get(table_id = i)
 
             except Exception:
 
-				# Добовляем пропущенные строки
+		# Добовляем пропущенные строки
                 create_table(i, values, usd)
 
-		# Сортируем строки по порядку
+	# Сортируем строки по порядку
         tables = Table.objects.order_by('table_id')
 
-		# Точка подсчёта итоговой скорости выполнения программы | P.s (Я добавил по желанию, чтобы при оптимизаций видеть результат)
+	# Точка подсчёта итоговой скорости выполнения программы | P.s (Я добавил по желанию, чтобы при оптимизаций видеть результат)
         finish_time = f"{time.time() - start_time}"[:6]
 
-		# Отправляем данные - "tables, usd, finish_time", в "main.html"
+	# Отправляем данные - "tables, usd, finish_time", в "main.html"
         return render(request, "main/main.html", {"tables": tables, "usd": usd, "finish_time":finish_time })
