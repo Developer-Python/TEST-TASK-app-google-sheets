@@ -6,18 +6,18 @@
 
 ### 1) Настройка пакетов | Python == 3.8.0
 
-1) pip3 install django3.0
-2) pip3 install django-grappelli
-3) pip3 install jsonfield
-4) pip3 install requests
-5) pip3 install google-api-python-client
-6) pip3 install google-auth 
-7) pip3 install google-auth-httplib2 
-8) pip3 install httplib2 
-9) pip3 install oauth2client
-10) pip3 install psycopg2
-11) pip3 install bs4
-12) pip3 install lxml
+1) pip install django
+2) pip install django-grappelli
+3) pip install jsonfield
+4) pip install requests
+5) pip install google-api-python-client
+6) pip install google-auth 
+7) pip install google-auth-httplib2 
+8) pip install httplib2 
+9) pip install oauth2client
+10) pip install psycopg2
+11) pip install bs4
+12) pip install lxml
 
 ----------------------------------------------
 
@@ -40,6 +40,7 @@
 ### 3) Настройка Админки и БД | Django == 3.0
 
 - Открываем `cmd` или `ConEmu` и в самой консоли переходим в `\app-google-sheets` там будет файл manage.py, прописываем следующее:
-1) django-admin createsuperuser, создаёте супер пользователя(имя: admin, почта: пропуск, пароль: admin)
-2) python manage.py migrate
-
+1) `django-admin createsuperuser` - Создаёте супер пользователя(Имя: admin, Почта: пропуск, Пароль: admin, Повторный пароль: admin)
+2) `python manage.py migrate` - Применяем миграцию, так как у нас новая БД
+3) `python manage.py runserver` - Запускаете сервер и переходите на `127.0.0.1:8000`
+4) `127.0.0.1:8000/admin` - Можете зайти в админку(по желанию)
