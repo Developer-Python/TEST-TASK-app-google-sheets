@@ -28,7 +28,7 @@
 - Заходим в директорию с установленной - `PostgreSql` у меня это `C:\Program Files\PostgreSQL` 
 - Открываем `cmd` или `ConEmu` и в консоли переходим в `C:\Program Files\PostgreSQL\14\bin` и прописываем следующее:
 1) `psql.exe -U postgres` или `psql.exe` | Вам надо войти в аккаунт, чтобы получить доступ!
-- Терминал изменится на `postgres=#` далее:
+1.1) Терминал изменится на `postgres=#` далее:
 2) `CREATE DATABASE sheets;`
 3) `CREATE USER admin WITH ENCRYPTED PASSWORD 'admin'; `
 4) `ALTER ROLE admin SET client_encoding TO 'utf8';`
