@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}kanalservis.ru{% endblock %}
+
+{% block content %}
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">► KanalServis.ru</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">SERVICES</a></li>
+          <li><a href="#">WORKS</a></li>
+          <li><a data-toggle="modal" data-target="#" href="#"><i class="fa fa-envelope-o"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="headerwrap">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h1>Анализ данных<b> Работа с API </b></h1>
+          <h2>+ на Django </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container w">
+    <div class="row centered">
+      <br><br>
+
+      <div class="col-lg-4">
+        <i class="fa fa-heart"></i>
+        <h4>DESIGN</h4>
+      </div>
+
+      <div class="col-lg-4">
+        <i class="fa fa-laptop"></i>
+        <h4>DJANGO</h4>
+      </div>
+
+      <div class="col-lg-4">
+        <i class="fa fa-trophy"></i>
+        <h4>API GOOGLE SHEETS</h4>
+      </div>
+
+    </div>
+    <br>
+    <br>
+  </div>
+
+
+  <div id="dg">
+    <div class="container">
+      <div class="row centered">
+          <table class="col-md-8">
+
+            <tr>
+              <th><i class="fa fa-hashtag" aria-hidden="true"></i></th>
+              <th>Номер заказа <i class="fa fa-ticket" aria-hidden="true"></i></th>
+              <th>Цена в долларах <i class="fa fa-usd" aria-hidden="true"></i></th>
+              <th>Цена в рублях <i class="fa fa-rub" aria-hidden="true"></i></th>
+              <th>Срок поставки <i class="fa fa-handshake-o" aria-hidden="true"></i></th>
+            </tr>
+            {% if tables %}
+              {% for table in tables %}
+                <tr>
+                  <td>{{table.table_id}}</td>
+                  <td>{{table.order_id}}</td>
+                  <td>{{table.order_eu}}</td>
+                  <td>{{table.order_ru}}</td>
+                  <td>{{table.date}} </td>
+                </tr>
+            {% endfor %}
+          {% endif %}
+        </table>
+        <div class="t_box_main col-md-4">
+
+          <div class="t_box_time">
+            <p class="t_time"><i class="fa fa-refresh" aria-hidden="true"></i> Авто-обновление каждые: <span class="t_value">10мин.</span> </p>
+          </div>
+
+          <hr>
+
+          <div class="t_box_usd">
+            <p class="t_usd"><i class="fa fa-money" aria-hidden="true"></i> Доллар(ЦБ РФ) на сегодня: <span class="t_value">{{usd}}$.</span> </p>
+          </div>
+
+          <p class="t_time_request"><i class="fa fa-bar-chart" aria-hidden="true"></i> Время выполнения программы: <span class="t_value">{{finish_time}}sec.</span> </p>
+
+          <hr>
+
+          <div class="t_box_a">
+
+            <form href="{% url 'main:update' %}">
+              <button id='auto_click' class="btn btn-success" >ОБНОВИТЬ ДАННЫЕ</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="r">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="f">
+    <div class="container">
+      <div class="row centered">
+        <p class="author_project">- Евгений Орлов -</p>
+        <a href="https://github.com/Developer-Python">
+          <i class="fa fa-github"></i>
+          <br><br><br><br><br><br><br>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

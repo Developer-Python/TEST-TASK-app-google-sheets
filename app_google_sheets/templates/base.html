@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <title>for_kanalservis.ru</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+
+    <!-- Loading of css and libs -->
+    <link rel="stylesheet" href="{% static '/lib/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <!-- Loading font -->
+    <link href="{% static '/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+  </head>
+
+
+  <body>
+
+    <!-- Loading content -->
+    {% block content %}
+    {% endblock %}
+
+  </body>
+
+
+  <!-- Loading of scripts and libs -->
+  <script src="{% static '/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static '/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static '/js/main.js' %}"></script>
+
+</html>
