@@ -3,7 +3,11 @@
 
 # --------------------------- Подключение модулей ---------------------------- #
 
+# Библеотека для работы с HTTP и т.д
+import httplib2
 
+# Библеотека для обработки URL
+import requests
 
 # Библеотеки для работы со временем и датами
 import time
@@ -15,26 +19,20 @@ from django.http import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
+# Библеотека для работы с HTML
+from bs4 import BeautifulSoup
+
+# Библеотека для работы с подключением сервисов
+from oauth2client.service_account import ServiceAccountCredentials
+
+# Библеотека для работы с google-api-python-client
+from googleapiclient.discovery import build
+
 # Библеотека для работы с представлениями на основе классов предназначеный для отображения данных
 from django.views.generic.base import View
 
 # Модели приложенния
 from . models import Table
-
-# Модуль для обработки URL
-import requests
-
-# Модуль для работы с HTML
-from bs4 import BeautifulSoup
-
-# Для работы с HTTP и т.д
-import httplib2
-
-# Для работы с подключением сервисов
-from oauth2client.service_account import ServiceAccountCredentials
-
-# Для работы с google-api-python-client
-from googleapiclient.discovery import build
 
 # Настройки проекта
 from django.conf import settings
@@ -81,7 +79,7 @@ def create_table(i, values, usd):
 		order_eu = values.get('values')[2][i],
 		order_ru = float(values.get('values')[2][i]) * usd,
 		date = values.get('values')[3][i],
-	)
+    )
 
     # Сохраняем в БД
     table.save()
@@ -98,7 +96,7 @@ def course_usd():
     course_usd_up_down = (
 	'value td-w-4 _bold _end mono-num _with-icon _up _red',
 	'value td-w-4 _bold _end mono-num _with-icon _down _green',
-	)
+    )
 
     # Делаем запрос на сайт - "https://cbr.ru/key-indicators/"
     resp = requests.get("https://cbr.ru/key-indicators/")
@@ -172,7 +170,7 @@ class TableView(View):
 
     def get(self, request):
 
-        # Точка отсчёта выполнения программы. | P.s (Я добавил по желанию, чтобы при оптимизаций видеть результат)
+        # Точка отсчёта выполнения программы
         start_time = time.time()
 
 	# Чтение документа(до [N] строк)
@@ -197,7 +195,7 @@ class TableView(View):
 	# Сортируем строки по порядку
         tables = Table.objects.order_by('table_id')
 
-	# Точка подсчёта итоговой скорости выполнения программы | P.s (Я добавил по желанию, чтобы при оптимизаций видеть результат)
+	# Точка подсчёта итоговой скорости выполнения программы
         finish_time = f"{time.time() - start_time}"[:6]
 
 	# Отправляем данные - "tables, usd, finish_time", в "main.html"
