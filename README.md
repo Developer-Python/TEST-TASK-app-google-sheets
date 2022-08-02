@@ -21,7 +21,7 @@
 
 ----------------------------------------------
 
-### 2) Настройка БД | PostgreSql == 14.4
+### 2) Настройка БД | PostgreSql
 
 - Потребуется установить - `PostgreSql` 
 - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
@@ -37,7 +37,7 @@
 8) `GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;`
 
 ----------------------------------------------
-### 3) Настройка Админки и БД | Django == 3.0
+### 3) Настройка Админки и БД | Django
 
 - Открываем `cmd` или `ConEmu` и в самой консоли переходим в `\app-google-sheets` там будет файл manage.py, прописываем следующее:
 1) `django-admin createsuperuser` - Создаёте супер пользователя(Имя: admin, Почта: пропуск, Пароль: admin, Повторный пароль: admin)
