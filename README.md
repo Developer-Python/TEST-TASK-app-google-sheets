@@ -37,3 +37,9 @@
 8) `GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;`
 
 ----------------------------------------------
+### 3) Настройка Админки и БД | Django == 3.0
+
+- Открываем `cmd` или `ConEmu` и в самой консоли переходим в `\app-google-sheets` там будет файл manage.py, прописываем следующее:
+1) django-admin createsuperuser, создаёте супер пользователя(имя: admin, почта: пропуск, пароль: admin)
+2) python manage.py migrate
+
