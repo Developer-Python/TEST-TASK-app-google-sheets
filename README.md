@@ -40,6 +40,7 @@
 ### 3) Настройка Админки и БД | Django == 3.0
 
 - Открываем `cmd` или `ConEmu` и в самой консоли переходим в `\app-google-sheets` там будет файл manage.py, прописываем следующее:
-1) django-admin createsuperuser, создаёте супер пользователя(имя: admin, почта: пропуск, пароль: admin)
-2) python manage.py migrate
-
+1) `django-admin createsuperuser`, создаёте супер пользователя(имя: admin, почта: пропуск, пароль: admin)
+2) `python manage.py migrate`
+3) `python manage.py runserver` - запускаете сервер и переходите на `127.0.0.1:8000`
+4) `127.0.0.1:8000/admin` - можете по желанию зайти в админку посмотреть
