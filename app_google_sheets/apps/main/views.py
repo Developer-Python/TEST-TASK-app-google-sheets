@@ -94,6 +94,12 @@ def course_usd():
     '''     Функция: Текущий курс доллара     '''
     '''======================================='''
 
+	# В зависимости от курса доллара меняется и класс
+    course_usd_up_down = (
+	'value td-w-4 _bold _end mono-num _with-icon _up _red',
+	'value td-w-4 _bold _end mono-num _with-icon _down _green',
+	)
+
 	# Делаем запрос на сайт - "https://cbr.ru/key-indicators/"
     resp = requests.get("https://cbr.ru/key-indicators/")
 
@@ -101,7 +107,11 @@ def course_usd():
     soup = BeautifulSoup(resp.text, 'lxml')
 
 	# Находим тег - "td" с классом - "value td-w-4...". В нём лежит значение текущего доллара
-    usd = f'{soup.find("td", attrs={ "class" : "value td-w-4 _bold _end mono-num _with-icon _up _red"})}'
+    for i in course_usd_up_down:
+
+		# Проверяем какой из классов вернёт True
+        if bool(soup.find("td", attrs={ "class" : f"{i}"})) == True:
+            usd = str(soup.find("td", attrs={ "class" : f"{i}"}))
 
 	# Возвращаем обработанную строку от всякого мусора с текущим долларам
     return float( usd[usd.find('>')+1:usd.rfind('<')].replace(',','.') )
