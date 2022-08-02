@@ -23,8 +23,14 @@
 
 ### 2) PostgreSql 
 
-1) Потребуется установить ПО - `PostgreSql`
-2) Заходим в директорию с установленной - `PostgreSql`
-- У меня это `C:\Program Files\PostgreSQL\14\bin` 
-3) Открываем `cmd` или `ConEmu` и прописываем следующее
-
+- Потребуется установить ПО - `PostgreSql` 
+- Заходим в директорию с установленной - `PostgreSql` у меня это `C:\Program Files\PostgreSQL` 
+- Открываем `cmd` или `ConEmu` в `C:\Program Files\PostgreSQL\14\bin` и `прописываем следующее:`
+1) psql.exe -U postgres или psql.exe | Вам надо войти в аккаунт, чтобы получить доступ!
+- Терминал изменится на `postgres=#` далее:
+2) CREATE DATABASE sheets;
+3) CREATE USER admin WITH ENCRYPTED PASSWORD 'admin'; 
+4) ALTER ROLE admin SET client_encoding TO 'utf8';
+5) ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
+6) ALTER ROLE admin SET timezone TO 'UTC';
+7) GRANT ALL PRIVILEGES ON DATABASE sheets TO admin;
