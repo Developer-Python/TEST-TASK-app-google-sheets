@@ -21,7 +21,7 @@
 
 ----------------------------------------------
 
-### 2) PostgreSql | PostgreSql == 14.4
+### 2) Настройка БД | PostgreSql == 14.4
 
 - Потребуется установить - `PostgreSql` 
 - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
