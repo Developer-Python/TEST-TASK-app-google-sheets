@@ -8,16 +8,13 @@
 
 1) pip install django
 2) pip install django-grappelli
-3) pip install jsonfield
-4) pip install requests
-5) pip install google-api-python-client
-6) pip install google-auth 
-7) pip install google-auth-httplib2 
-8) pip install httplib2 
-9) pip install oauth2client
-10) pip install psycopg2
-11) pip install bs4
-12) pip install lxml
+3) pip install requests
+4) pip install google-api-python-client
+5) pip install httplib2 
+6) pip install oauth2client
+7) pip install psycopg2
+8) pip install bs4
+9) pip install lxml
 
 ----------------------------------------------
 
