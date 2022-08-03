@@ -94,8 +94,8 @@ def course_usd():
 
     # В зависимости от курса доллара меняется и класс
     course_usd_up_down = (
+	'value td-w-4 _bold _end mono-num _with-icon _down _green',
     'value td-w-4 _bold _end mono-num _with-icon _up _red',
-    'value td-w-4 _bold _end mono-num _with-icon _down _green',
     )
 
     # Делаем запрос на сайт - "https://cbr.ru/key-indicators/"
@@ -112,7 +112,7 @@ def course_usd():
             usd = str(soup.find("td", attrs={ "class" : f"{i}"}))
 
     # Возвращаем обработанную строку от всякого мусора с текущим долларам
-    return float( usd[usd.find('>')+1:usd.rfind('<')].replace(',','.') )
+    return round(float( usd[usd.find('>')+1:usd.rfind('<')].replace(',','.') ), 2)
 
 
 
